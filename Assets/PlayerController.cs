@@ -3,8 +3,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10f; //public 외부 공용, private 비공개
-
+    public GameObject BulletPrefab;
+    public float BulletSpeed = 100f;
     int[] scores = new int[5];
+
+
 
     void Start()
     {
@@ -37,6 +40,13 @@ public class PlayerController : MonoBehaviour
 
         Vector3 direction = new Vector3(x, y, 0);
         transform.position += direction.normalized * speed * Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject Bullet = Instantiate(BulletPrefab); //Instantiate==실체화명령어
+            Bullet.transform.position = transform.position; //transform.position==플레이어위치, Bullet.transform.position==총알위치
+            Bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.up * BulletSpeed);
+        }
 
         
         //if (Input.GetKey(KeyCode.UpArrow))
