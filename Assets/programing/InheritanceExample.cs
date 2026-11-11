@@ -21,6 +21,30 @@ public class InheritanceExample : MonoBehaviour
         Debug.Log(maria.Age);
         Debug.Log(maria.GetBaseAge());
 
+        //Human Paul = new Human("Paul", 3, 90); //실패사례
+        //Baby baby = Paul as Baby;
+
+        //if (baby==null)
+        //{
+        //    Debug.Log("형변환 실패");
+        //}
+        //else 
+        //{
+        //    Debug.Log("형변환 성공");
+        //}
+
+        Human Alexis = new Adult("alexis", 23, 155); //성공사례
+        Adult adult_alexis = Alexis as Adult; 
+
+        if (adult_alexis == null)
+        {
+            Debug.Log("형변환 실패");
+        }
+        else
+        {
+            Debug.Log("형변환 성공");
+        }
+
         //Human jason = maria;
         //Debug.Log(jason.GetAge());
 
@@ -30,30 +54,6 @@ public class InheritanceExample : MonoBehaviour
         //Human jason = new Adult("jason", 32, 172);//Adult 타입
         //Adult adult = (Adult)jason;
     }
-}
-
-class Adult : Human
-{
-    public Adult(string _name, int _age, float _height)
-        : base(_name, _age, _height) { Age = _age; }
-
-    public new int Age;
-
-    public void SetBaseAge(int age)
-    {
-        base.age = age;
-    }
-
-    public int GetBaseAge()
-    {
-        return base.age;
-    }
-}
-
-class Baby : Human
-{
-    public Baby(string _name, int _age, float _height)
-        : base(_name, _age, _height) { }
 }
 
 class Human
@@ -118,3 +118,29 @@ class Human
         Debug.Log("sleep");
     }
 }
+
+
+class Adult : Human
+{
+    public Adult(string _name, int _age, float _height)
+        : base(_name, _age, _height) { Age = _age; }
+
+    public new int Age;
+
+    public void SetBaseAge(int age)
+    {
+        base.age = age;
+    }
+
+    public int GetBaseAge()
+    {
+        return base.age;
+    }
+}
+
+class Baby : Human
+{
+    public Baby(string _name, int _age, float _height)
+        : base(_name, _age, _height) { }
+}
+

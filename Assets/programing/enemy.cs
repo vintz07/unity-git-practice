@@ -13,6 +13,11 @@ public class enemy : MonoBehaviour
         {
             Die();
         }
+
+        Debug.Log("Enemy Health:" + health);
+
+        if (health == 0)
+            Debug.Log("적이 폭파하였습니다");
     }
 
     public float GetHealth()
@@ -32,6 +37,8 @@ public class enemy : MonoBehaviour
             TakeDamge(10);
             coll.gameObject.SetActive(false);
         }
+
+        
     }
      public virtual void Move()
     {
@@ -47,5 +54,6 @@ public class enemy : MonoBehaviour
     void Update()
     {
         
+
     }
 }
